@@ -1,0 +1,38 @@
+<!--{% load static %}-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Growth Analysis</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <h1>Deposit Growth Analysis</h1>
+    <p>Report for {{ month }} {{ year }}</p>
+</header>
+<main>
+    <section>
+        <h2>Deposit Data</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Bank</th>
+                    <th>Deposit Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in bank_report %}
+                <tr>
+                    <td>{{ row.bank_name }}</td>
+                    <td>{{ row.deposits }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+

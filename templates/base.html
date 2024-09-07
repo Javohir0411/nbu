@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>
+        {% block title %}
+        Uz Milliy Bank
+        {% endblock %}
+    </title>
+    <style>
+        .navbar_text {
+            padding: 7px;
+            font-family: serif;
+            border: 5px outset black;
+        }
+
+        .home_page {
+            margin-left: 150px;
+        }
+
+        .contact {
+            margin-right: 150px;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(112, 156, 255, 0.51);
+        }
+
+        .flex-container > div {
+            font-family: "Times New Roman", serif;
+            color: black;
+            margin: 10px;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid m-2" style="text-align: center">
+        <!--Home Page uchun link-->
+        <a class=" navbar_text navbar-brand home_page" href="{% url 'main_page' %}">Bosh Sahifa</a>
+    </div>
+</nav>
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

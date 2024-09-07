@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredit Ulushlari Tahlili</title>
+</head>
+<body>
+    <h1>Kredit Ulushlari Tahlili</h1>
+
+    {% if bank_credits %}
+        <h2>Banklar Bo'yicha Kreditlar</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Bank Nomi</th>
+                    <th>Kreditlar</th>
+                    <th>Ulush (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in bank_credits %}
+                    <tr>
+                        <td>{{ item.bank_name }}</td>
+                        <td>{{ item.credits }}</td>
+                        <td>{{ item.share|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Jami kreditlar: {{ total_credits }}</p>
+
+        <!-- Pie chart uchun kod (Agar kerak bo'lsa) -->
+        <h2>Pie Chart</h2>
+        <div id="pie-chart"></div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [{% for item in chart_data %}{{ item.bank_name }}{% endfor %}]
+                    datasets: [{
+                        data: [{% for item in chart_data %}{{ item.share }}{% endfor %}]
+                        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
+                    }]
+                }
+            })
+        </script>
+    {% else %}
+        <p>Ma'lumot mavjud emas.</p>
+    {% endif %}
+</body>
+</html>

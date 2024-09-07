@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asosiy sahifa</title>
+</head>
+<body>
+    <h1>Asosiy sahifa</h1>
+    <form action="{% url 'calculate' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Hisoblash</button><br><br>
+        <a href="{% url 'analyze_deposit_growth' %}">Deposit Growth Analysis</a><br><br>
+        <a href="{% url 'analyze_credit_distribution' %}">Credit Distribution Analysis</a><br><br>
+        <a href="{% url 'analyze_credit_shares' %}">Credit Shares Analysis</a><br><br>
+        <a href="{% url 'create_excel' %}">Download Excel Report</a><br><br>
+    </form>
+</body>
+</html>

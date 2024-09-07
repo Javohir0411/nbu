@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Hisoblash{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Hisoblash Sahifasi</h1>
+
+    <!-- Formani yaratish -->
+    <form method="POST" action="{% url 'calculate' %}">
+        {% csrf_token %}
+        <label for="data">Ma'lumotlar:</label>
+        <textarea id="data" name="data" rows="10" cols="50" placeholder="Ma'lumotlarni kiriting" required></textarea>
+        <br><br>
+
+        <button type="submit">Hisoblash</button>
+    </form>
+
+    <!-- Hisoblash natijalarini ko'rsatish -->
+    {% if result %}
+        <h2>Natijalar:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+
+    <!-- Orqaga qaytish tugmasi -->
+    <a href="{% url 'stats' %}">Orqaga</a>
+{% endblock %}
